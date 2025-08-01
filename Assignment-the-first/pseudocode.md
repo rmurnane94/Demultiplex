@@ -1,4 +1,4 @@
-This algorithm now has to go through and pull out the index pairs that are matched up, the index pairs that are not matched up, and the index pairs where one or both are unknown/low quality (aren't in known indexes, or are below our quality score cutoff)
+This algorithm now has to go through and pull out the index pairs that are matched up, the index pairs that are not matched up, and the index pairs where one or both are unknown/low quality (aren't in known indexes, or are below our quality score cutoff). The information for the reads is split between the 4 files. Once the algorithm figures out the situation with the index pairs, the algorithm must add records appropriately to separate output files. There also should be a file with some output stats such as counts of the different types of index pairs etc. 
 
 This means also have to determine a quality score cutoff. TBD
 
@@ -12,9 +12,11 @@ Make a dictionary of all indexes: index_dict with 'B1':	'GTAGCGTA' etc.
 Make a function for finding reverse compliments of DNA sequences. The indexes in the R2 file will be forward and match the known indexes. The indexes in R3 will be reverse compliments.
 ex: for a match of 'B1' the index  'GTAGCGTA'  will be found in R2, but its reverse compliment 'TACGCTAC' will be found in R3. Having a function will make this a lot easier.
 ```
-def reverse_compliment(sequence: str)
-	'takes the DNA sequence and makes reverse compliment'
+def reverse_compliment(sequence: str) -> str:
+	'''takes the DNA sequence and makes reverse compliment'''
 	return reverse compliment
+Example input: AGCT
+Example output: AGCT
 ```
 
 initialize counters to count the number of read-pairs with matched indexes (one for each index pair), the number of read pairs with index-hopping, and the number of read pairs with unknown indexes. 
