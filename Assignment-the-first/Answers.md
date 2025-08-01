@@ -19,7 +19,8 @@
     
     2. A good quality score cutoff for index reads is an mean score of 30 for all the basepairs. The first bp in the index is always  much lower, so having an individual base pair cutoff would not work. If the whole index averages a score of 30, then it is going to be very reliable. The chances of getting misidentified indexes will be very low in this case and it will allow for most of the reads to pass through as the mean for most of the basepairs is at least 30. For the biological reads, mean of 35 would be a good cutoff. This is the actual sequence data to be analyzed and therefore having a higher threshold will ensure higher quality. Having reads here that are low quality will not be helpful. 30 seems to be too low for the reads as that is what the average score is for the first, lower quality score base pairs in the reads.
   
-    3.  ```
+    3. N Counts
+        ```
         For R2:
         cat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz | grep -A1 "^@" | grep -v "^@"| grep -c "N"
         3976613
